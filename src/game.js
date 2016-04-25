@@ -144,7 +144,7 @@ class Gamebox {
     } else if ($el.parent().hasClass('set')) {
       this.showConf($el);
     } else {
-      this.launch(this.getParams($el, this.$nav.is(':visible') ? app.name : 'bin/utils'));
+      this.launch(this.getParams($el, this.$nav.is(':visible') ? app.name : 'vendor/utils'));
     }
   }
 
