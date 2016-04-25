@@ -1,7 +1,7 @@
 {
   "name": "dos-game-box",
   "productName": "DOSGameBox",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "DOS Games Emulator",
   "license": "MIT",
   "homepage": "https://github.com/firejune/dos-game-box",
@@ -15,6 +15,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/firejune/dos-game-box.git"
+  },
+  "author": {
+    "name": "Joon Kyoung",
+    "email": "to@firejune.com",
+    "url": "http://firejune.com"
   },
   "dependencies": {
     "configstore": "*",
