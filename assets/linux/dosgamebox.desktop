@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=$APP_NAME
+Version=$APP_VERSION
+GenericName=$APP_NAME
+X-GNOME-FullName=$APP_NAME
+Comment=$APP_DESCRIPTION
+Encoding=UTF-8
+Type=Application
+Icon=$APP_ICON
+Terminal=false
+Path=$APP_PATH
+Exec=$EXEC_PATH %U
+TryExec=$TRY_EXEC_PATH
+StartupNotify=false
+Categories=Audio;Player;Recorder;Music;
+MimeType=$APP_MIME_TYPE;
+
+Actions=OpenFile;
+
+[Desktop Action OpenFile]
+Name=Open File...
+Exec=$EXEC_PATH -o
+Path=$APP_PATH

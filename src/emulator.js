@@ -50,7 +50,7 @@ class Dosbox {
 
     if (this.__options.engine.match('.sync')) {
       this.locateFile = (memFileName) => {
-        const zip = app.readZip(`./bin/memory.${this.__options.engine.split('.')[0]}.zip`);
+        const zip = app.readZip(`./vendor/memory.${this.__options.engine.split('.')[0]}.zip`);
         app.writeFile(`./${app.name}/${memFileName}`, zip.file(memFileName).asNodeBuffer());
         return `${app.homePath}/${app.name}/${memFileName}`;
       };
@@ -160,7 +160,7 @@ class Mount {
   utils() {
     this.module.addRunDependency(`datafile_/home/web_user/game/UTILS`);
 
-    const data = app.readZip('./bin/UTILS.zip');
+    const data = app.readZip('./vendor/bin/UTILS.zip');
     this.unzip(data, 'game/UTILS');
     this.module.removeRunDependency(`datafile_/home/web_user/game/UTILS`);
   }
@@ -169,7 +169,7 @@ class Mount {
     if (!app.readConf('gus').gus) return;
 
     this.module.addRunDependency(`datafile_/home/web_user/game/ULTRASND`);
-    const data = app.readZip('./bin/ULTRASND.zip');
+    const data = app.readZip('./vendor/bin/ULTRASND.zip');
     this.unzip(data, 'game/ULTRASND');
     this.module.removeRunDependency(`datafile_/home/web_user/game/ULTRASND`);
   }

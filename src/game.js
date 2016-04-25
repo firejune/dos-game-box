@@ -124,6 +124,7 @@ class Gamebox {
     app.setup(() => {
       this.makeList(this.$nav, app.getFiles('game'));
       this.makeList(this.$util, app.getFiles('util'));
+      app.register({});
     });
   }
 

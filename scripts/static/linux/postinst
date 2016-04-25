@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+chmod +x /opt/DOSGameBox/DOSGameBox
+ln -s -f /opt/DOSGameBox/DOSGameBox /usr/bin/dosgamebox

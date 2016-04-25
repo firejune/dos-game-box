@@ -6,30 +6,42 @@ const ini = require('ini');
 const ncp = require('ncp');
 const JSZip = require('jszip');
 
-const electron = require('electron');
-const remote = electron.remote;
-const dialog = remote.dialog;
-const shell = remote.shell;
-const Menu = remote.Menu;
-const webFrame = electron.webFrame;
+const { remote, webFrame, ipcRenderer } = require('electron');
+const { shell, app, dialog, Menu } = remote;
 
-const config = require('../package.json');
 const dosboxDefaultConfPath = './dosbox.conf';
-const dosboxConfPath = `./${config.name}/dosbox.conf`;
+const dosboxConfPath = `./${app.getName()}/dosbox.conf`;
 
 
 // 두 손까락 더블 탭 줌 막기
 webFrame.setZoomLevelLimits(1, 1);
 
 const os = {darwin: 'osx', linux: 'linux', win32: 'windows'}[process.platform];
-const app = {
+const electron = {
   os,
-  name: config.name,
-  version: config.version,
-  appPath: remote.app.getAppPath(),
-  homePath: remote.app.getPath('home'),
+  name: app.getName(),
+  version: app.getVersion(),
+  appPath: app.getAppPath(),
+  dataPath: app.getPath('userData'),
+  homePath: app.getPath('home'),
   separator: path.sep,
   pathSeparator: os === 'windows' ? '\\' : '/',
+
+  register(actions) {
+    this.actions = actions;
+    this.progress = actions.progress;
+
+    // fix renderer process bloking
+    ipcRenderer.on('log', (e, ...args) => console.debug('[IPC]', ...args));
+    ipcRenderer.on('error', (e, ...args) => console.error('[IPC]', ...args));
+    // ipcRenderer.on('context-menu', (event, idx, subidx) => this.executeContextMenu(idx, subidx));
+    ipcRenderer.on('open-file', (event, file) => console.debug('[IPC-OPEN-FILE]', file));
+    ipcRenderer.on('open-file-start', (event) => console.debug('[IPC-OPEN-FILE-START]'));
+
+    ipcRenderer.send('ipc-ready');
+
+    // this.updateMenu();
+  },
 
   /* Dialog functions */
   showFileOpenDialog(props, callback) {
@@ -78,7 +90,7 @@ const app = {
     }
 
     if (!this.getFiles('game').length) {
-      const source = path.resolve(this.appPath, './bin/games');
+      const source = path.resolve(this.appPath, './test/games');
       const destination = path.resolve(this.homePath, `./${this.name}`);
       ncp(source, destination, err => {
         if (err) {
@@ -158,7 +170,7 @@ const app = {
   },
 
   quit() {
-    remote.app.quit();
+    app.quit();
   },
 
   setTitle(title) {
@@ -183,7 +195,7 @@ const app = {
   },
 
   getFiles(type) {
-    const filepath = type === 'game' ? `${this.homePath}/${this.name}` : `${this.appPath}/bin/utils`;
+    const filepath = type === 'game' ? `${this.homePath}/${this.name}` : `${this.appPath}/vendor/utils`;
     const files = [];
     fs.readdirSync(filepath).forEach(file => {
       if (file.toLowerCase().indexOf('.zip') !== -1) {
@@ -222,7 +234,7 @@ const app = {
   },
 
   addToRecent(filepath) {
-    filepath && remote.app.addRecentDocument(filepath);
+    filepath && app.addRecentDocument(filepath);
   },
 
   /* Application menu */
@@ -231,4 +243,4 @@ const app = {
   }
 };
 
-module.exports = app;
+module.exports = electron;
