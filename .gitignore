@@ -1,0 +1,7 @@
+.DS_Store
+build/
+dist/
+v86/closure-compiler/
+v86/images/
+node_modules/
+npm-debug.log

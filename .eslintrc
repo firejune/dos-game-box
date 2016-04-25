@@ -1,0 +1,74 @@
+{
+  /**
+   * ECMA 요구사항
+   */
+  "ecmaFeatures": {
+    "modules": true,
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "experimentalObjectRestSpread": true
+  },
+
+  /**
+   * 환경
+   */
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+
+  /**
+   * 확장
+   */
+  "extends": ["standard", "airbnb"],
+
+  /**
+   * 글로벌 변수
+   */
+  "globals": {
+    "$": true,
+    "app": true,
+    "box": true
+  },
+
+  /**
+   * 파서
+   */
+  "parser": "babel-eslint",
+
+  /**
+   * 플러그인
+   */
+  "plugins": ["standard"],
+
+  /**
+   * 사용자화
+   */
+  "rules": {
+    "comma-dangle": [2, "never"],
+    "consistent-return": 0,
+    "default-case": 0,
+    "guard-for-in": 0,
+    "func-names": 0,
+    "prefer-template": 0,
+    "max-len": 0,
+    "new-cap": [2, { "newIsCap": true, "capIsNew": false }],
+    "no-console": 0,
+    "no-labels": 0,
+    "no-throw-literal": 0,
+    "camelcase": 0,
+    "no-cond-assign": 0,
+    "no-param-reassign": 0,
+    "no-shadow": [2, { "hoist": "functions" }],
+    "no-unused-vars": [2, { "vars": "all", "args": "none" }],
+    "no-use-before-define": 0,
+    "no-unused-expressions": [2, { "allowShortCircuit": true, "allowTernary": true }],
+    "object-curly-spacing": 0, // [2, "never"]
+    "quote-props": [2, "as-needed", { "keywords": true }],
+    "react/prop-types": 0,
+    "react/sort-comp": 0,
+    "space-before-function-paren": [2, "never"],
+    "strict": 0
+  }
+}

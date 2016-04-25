@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>DOSGameBox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/app.css" rel="stylesheet">
+    <!--link href="assets/css/v86.css" rel="stylesheet"-->
+  </head>
+
+  <body>
+    <nav id="nav">
+      <p>DOSGameBox Version <span class="ver"></span> Build <span class="sdl"></span></p>
+      <p>Directory of <b class="dir">C:&#92;GAMES</b></p>
+      <p>&nbsp;</p>
+      <p class="item dir settings"><a>[SETTINGS]</a></p>
+      <p class="item dir utils target"><a>[UTILS]</a></p>
+      <p>&nbsp;</p>
+      <p class="count"><b class="files"></b> File&lt;s&gt; <b class="total"></b> bytes</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </nav>
+
+    <nav id="utils" style="display: none">
+      <p>DOSGameBox Version <span class="ver"></span> Build <span class="sdl"></span></p>
+      <p>Directory of <b class="dir">C:&#92;GAMES\UTILS</b></p>
+      <p>&nbsp;</p>
+      <p class="item dir parent"><a>[..]</a></p>
+      <p class="item prompt set target"><a>PROMPT_C:</a></p>
+      <p>&nbsp;</p>
+      <p class="count"><b class="files"></b> File&lt;s&gt; <b class="total"></b> bytes</p>
+    </nav>
+
+    <nav id="set" style="display: none">
+      <p>DOSGameBox Version <span class="ver"></span> Build <span class="sdl"></span></p>
+      <p>Directory of <b class="dir">C:&#92;GAMES\SETTINGS</b></p>
+      <p>&nbsp;</p>
+      <p class="item dir parent"><a>[..]</a></p>
+      <p class="item set focus"><a>SET_default</a> <span class="pull-right">Reset all settings to default</span></p>
+      <p class="item set"><a>SET_sdl</a> <span class="pull-right">Interacts with your real hardware</span></p>
+      <p class="item set"><a>SET_dosbox</a> <span class="pull-right">Generic DOSBox settings</span></p>
+      <p class="item set"><a>SET_render</a> <span class="pull-right">Improve speed and quality of rendering</span></p>
+      <p class="item set"><a>SET_cpu</a> <span class="pull-right">Adjust of emulate the CPU</span></p>
+      <p class="item set"><a>SET_mixer</a> <span class="pull-right">Quality of emulated audio</span></p>
+      <p class="item set"><a>SET_midi</a> <span class="pull-right">MPU-401 to emulation</span></p>
+      <p class="item set"><a>SET_sblaster</a> <span class="pull-right">Sound Blaster emulation</span></p>
+      <p class="item set"><a>SET_gus</a> <span class="pull-right">Gravis Ultra Sound emulation</span></p>
+      <p class="item set"><a>SET_speaker</a> <span class="pull-right">PC-Speaker emulation</span></p>
+      <p class="item set"><a>SET_joystick</a> <span class="pull-right">Joystick to emulate</span></p>
+      <p class="item set"><a>SET_serial</a> <span class="pull-right">Device connected to com port</span></p>
+      <p class="item set"><a>SET_dos</a> <span class="pull-right">DOS related settings</span></p>
+      <p class="item set"><a>SET_ipx</a> <span class="pull-right">Enable ipx over UDP/IP emulation</span></p>
+      <p class="item set"><a>SET_autoexec</a> <span class="pull-right">Define the AUTOEXEC.BAT</span></p>
+      <p>&nbsp;</p>
+    </nav>
+
+    <section id="dialog" class="dialog">
+      <p class="section">[<span></span>]</p>
+      <textarea></textarea>
+      <p class="button ok">OK</p>
+      <p class="button">CANCEL</p>
+    </section>
+
+    <section id="overlay" class="overlay"></section>
+
+    <section class="gamebox-container" id="box">
+      <div id="screen"></div>
+      <canvas id="canvas" class="gamebox-canvas" oncontextmenu="event.preventDefault()"></canvas>
+    </section>
+
+    <section class="gamebox-loader">
+      <div class="gamebox-loader-message" id="output"></div>
+    </section>
+
+    <script src="./src/game.js"></script>
+    <script src="./src/midi/loader.js"></script>
+    <script>MIDIjs.play('./src/midi/SILPGM.MID');</script>
+    <!--script src="./src/v86.js"></script -->
+  </body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "sourceMaps": "inline",
+  "retainLines": true,
+  "compact": true,
+  "comments": false,
+
+  "presets": [
+    // "es2015-rollup",
+    // "stage-2",
+    // "es2015",
+    // "react"
+  ],
+
+  "plugins": [
+    // Is required
+    // "transform-es2015-modules-commonjs",
+    // "transform-es2015-destructuring",
+    // "transform-es2015-parameters",
+
+    // Require if using electron version 0.36.x
+    // "transform-es2015-shorthand-properties",
+    // "transform-es2015-object-super",
+    // "transform-es2015-for-of",
+
+    // Require if using electron version 0.35.x
+    // "transform-es2015-block-scoping",
+    // "transform-es2015-classes",
+    // "transform-es2015-spread",
+
+    // Not Working
+    // "transform-es2015-sticky-regex",
+    // "transform-es2015-typeof-symbol",
+    // "transform-es2015-unicode-regex",
+
+    /* Misc */
+    // "transform-remove-console",
+    // "transform-runtime",
+
+    /* Stage-2 */
+    // "transform-object-rest-spread"
+  ]
+}
