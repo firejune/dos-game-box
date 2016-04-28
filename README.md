@@ -68,7 +68,6 @@ brew install mono
 - [Emscripten](https://github.com/kripken/emscripten) is a C/C++ compiler to javascript
 
 ### See Also...
----
 - [Boxer](http://boxerapp.com/) - The DOS game emulator that’s fit for your Mac.
 - [AnyToISO](http://www.crystalidea.com/anytoiso) - Open/Extract/Convert to ISO, Extract ISO, Make ISO
 - [Best Old Games](http://www.bestoldgames.net/eng/) - a site that offers the old games for free download. 
