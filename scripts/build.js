@@ -92,7 +92,8 @@ const all = {
   // Build 32/64 bit binaries.
   arch: argv.arch,
 
-  // The human-readable copyright line for the app.
+  // The human-readable copyright line for the app. Maps to the `LegalCopyright` metadata
+  // property on Windows, and `NSHumanReadableCopyright` on OS X.
   'app-copyright': pkg.license,
 
   // The release version of the application. Maps to the `ProductVersion` metadata
@@ -293,7 +294,7 @@ function buildDarwin(cb) {
 
       const inPath = path.join(buildPath[0], `${APP_NAME}.app`);
       const outPath = path.join(DIST_PATH, `${BUILD_NAME}-darwin-${destArch}${signed}.zip`);
-      zip(inPath, outPath);
+      zip.zipSync(inPath, outPath);
 
       console.log('OS X: Created zip.');
     }
@@ -383,7 +384,7 @@ function buildWin32(cb) {
 
       const inPath = path.join(DIST_PATH, path.basename(filesPath));
       const outPath = path.join(DIST_PATH, `${BUILD_NAME}-win32-${destArch}.zip`);
-      zip(inPath, outPath);
+      zip.zipSync(inPath, outPath);
 
       console.log(`Windows: Created ${destArch} portable app.`);
       cb_(null);
@@ -481,7 +482,7 @@ function buildLinux(cb) {
 
     const inPath = path.join(DIST_PATH, path.basename(filesPath));
     const outPath = path.join(DIST_PATH, `${BUILD_NAME}-linux-${destArch}.zip`);
-    zip(inPath, outPath);
+    zip.zipSync(inPath, outPath);
 
     console.log(`Linux: Created ${destArch} zip.`);
     cb_(null);
